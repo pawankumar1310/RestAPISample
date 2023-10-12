@@ -28,10 +28,10 @@ public class StudentController : ControllerBase
             var students = await _context.Students.ToListAsync();
             return Ok(students);
         }
-          catch (Exception)
-            {
-                return BadRequest("Error occurred !!");
-            }
+        catch (Exception)
+        {
+            return BadRequest("Error occurred !!");
+        }
     }
     // Get student by Student ID
     // GET api/students/STDN00001
@@ -43,9 +43,9 @@ public class StudentController : ControllerBase
             var student = await _context.Students.FindAsync(student_Id);
             return Ok(student);
         }
-        catch
+        catch (Exception)
         {
-            throw;
+            return BadRequest("Error occurred !!");
         }
 
     }
@@ -60,7 +60,7 @@ public class StudentController : ControllerBase
             if (student != null)
             {
                 _context.SaveChanges();
-                 return BadRequest("Already student exist.");
+                return BadRequest("Already student exist.");
             }
             else
             {
@@ -69,9 +69,9 @@ public class StudentController : ControllerBase
                 return Ok(true);
             }
         }
-        catch
+        catch (Exception)
         {
-            throw;
+            return BadRequest("Error occurred !!");
         }
 
     }
@@ -94,9 +94,9 @@ public class StudentController : ControllerBase
                 return Ok(false);
             }
         }
-        catch
+        catch (Exception)
         {
-            throw;
+            return BadRequest("Error occurred !!");
         }
 
     }
@@ -111,9 +111,9 @@ public class StudentController : ControllerBase
             await _context.SaveChangesAsync();
             return Ok(_student);
         }
-        catch
+        catch (Exception)
         {
-            throw;
+            return BadRequest("Error occurred !!");
         }
 
     }

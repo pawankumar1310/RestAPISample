@@ -18,7 +18,16 @@ builder.Services.AddSwaggerGen(options =>
         Version="v1"
     });
 });
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin", builder =>
+    {
+        // builder.WithOrigins("http://127.0.0.1:5500") 
+                builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 //Configuring and adding a database context to the dependency injection container
 builder.Services.AddDbContext<StudentDbDemoContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionStrings"));
@@ -32,6 +41,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseRouting();
+app.UseCors("AllowOrigin");
 
 app.UseHttpsRedirection();
 
