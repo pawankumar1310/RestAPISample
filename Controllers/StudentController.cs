@@ -10,10 +10,10 @@ public class StudentController : ControllerBase
 {
 
 
-    private readonly StudentDbDemoContext _context;
+    private readonly StudentDbContext _context;
     private readonly ILogger<StudentController> _logger;
 
-    public StudentController(StudentDbDemoContext context, ILogger<StudentController> logger)
+    public StudentController(StudentDbContext context, ILogger<StudentController> logger)
     {
         _context = context;
         _logger = logger;

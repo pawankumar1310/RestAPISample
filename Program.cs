@@ -29,7 +29,7 @@ builder.Services.AddCors(options =>
     });
 });
 //Configuring and adding a database context to the dependency injection container
-builder.Services.AddDbContext<StudentDbDemoContext>(options => {
+builder.Services.AddDbContext<StudentDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionStrings"));
 });
 
